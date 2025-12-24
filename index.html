@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Your Superpower ⚡</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif; }
+    body {
+      background: linear-gradient(to bottom right, #6ee7b7, #3b82f6);
+      display:flex; justify-content:center; align-items:center; height:100vh;
+      padding:20px; overflow:hidden;
+    }
+    .container {
+      background:#fff; border-radius:20px; padding:30px; max-width:400px;
+      width:100%; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      position:relative; overflow:hidden;
+    }
+    h1 { color:#1d4ed8; font-size:28px; margin-bottom:15px; }
+    p { color:#333; font-size:16px; margin-bottom:20px; }
+    ul { text-align:left; margin-bottom:25px; color:#555; }
+    ul li { margin-bottom:8px; }
+    .cta-btn {
+      background:#10b981; color:#fff; padding:15px 25px;
+      font-size:18px; border:none; border-radius:12px;
+      cursor:pointer; width:100%; transition:0.3s;
+    }
+    .cta-btn:hover { background:#059669; transform:scale(1.05); }
+    .footer { margin-top:20px; font-size:12px; color:#777; }
+    /* ===== Particle animation ===== */
+    .particle { position:absolute; border-radius:50%; opacity:0.7; pointer-events:none; }
+    /* ===== Counter ===== */
+    .counter { margin-bottom:20px; font-size:16px; color:#f59e0b; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="counter" id="visitorCounter">Visitors Online: 1</div>
+    <h1>Discover Your Hidden Superpower ⚡</h1>
+    <p>Answer 10 simple questions and unlock your AI-powered result instantly!</p>
+    <ul>
+      <li>✅ Fast & Free</li>
+      <li>✅ Works on all devices</li>
+      <li>✅ Shockingly accurate results</li>
+    </ul>
+    <button class="cta-btn" id="startQuiz">START THE QUIZ NOW</button>
+    <p class="footer">🔒 100% Free • Takes less than 1 minute • No credit card</p>
+  </div>
+
+  <script>
+    // ===== CPA Lead Link =====
+    const offerLink = "YOUR_CPALEAD_LINK_HERE"; // ضع الرابط هنا
+    document.getElementById('startQuiz').addEventListener('click', () => {
+      window.open(offerLink, "_blank");
+    });
+
+    // ===== Particle Animation =====
+    for(let i=0;i<25;i++){
+      const particle=document.createElement('div');
+      particle.className='particle';
+      particle.style.width=Math.random()*10+5+'px';
+      particle.style.height=particle.style.width;
+      particle.style.background='rgba(255,255,255,'+Math.random()+')';
+      particle.style.top=Math.random()*100+'%';
+      particle.style.left=Math.random()*100+'%';
+      particle.style.animation='float '+(Math.random()*5+5)+'s linear infinite';
+      document.body.appendChild(particle);
+    }
+
+    const style=document.createElement('style');
+    style.innerHTML='@keyframes float{0%{transform:translateY(0);}100%{transform:translateY(-120vh);}}';
+    document.head.appendChild(style);
+
+    // ===== Visitor Counter Simulation =====
+    let counter = 1;
+    setInterval(()=>{
+      counter = counter + Math.floor(Math.random()*3);
+      document.getElementById('visitorCounter').textContent='Visitors Online: '+counter;
+    },2000);
+  </script>
+</body>
+</html>
